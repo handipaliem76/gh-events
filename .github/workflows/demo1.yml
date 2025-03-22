@@ -3,7 +3,19 @@ on:
     pull_request:
         types:
             - opened
+        branches:
+        - main
+        - 'dev-*' # wildcard - example dev-new dev-this-is-new
+        - 'feat/**' # wildcard example: feat/new feat/new/button
     workflow_dispatch:
+    push:
+      branches:
+        - main
+        - 'dev-*' # wildcard - example dev-new dev-this-is-new
+        - 'feat/**' # wildcard example: feat/new feat/new/button
+      paths:
+        - '.github/wrokflows/*' # meaning, push to main when something has changed with anything in the path .github/wrokflows/*
+
 jobs:
     deploy:
         runs-on: ubuntu-latest
